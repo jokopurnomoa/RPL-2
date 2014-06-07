@@ -17,12 +17,12 @@ public class C_player5 : MonoBehaviour {
 	//yang asli
 	public bool jump;
 	float jumpForce = 0f; // Force added when the player jumps.
-	public float firstJumpForce = 680f;
-	public float secondJumpForce = 680f;
+	public float firstJumpForce = 12f;
+	public float secondJumpForce = 15f;
 	
 	private bool canJump = false;
 	private int availableJumps = 2;
-	private float sp = 1f;
+	private float sp = 1.2f;
 	
 	public Vector2 lariotomatis(float addspedd)
 	{
@@ -35,6 +35,37 @@ public class C_player5 : MonoBehaviour {
 		anim = GetComponent<Animator>();	
 	}
 	
+
+	
+	//Update for physics steps. Regular intervals. 
+	void FixedUpdate(){
+		
+		grounded = Physics2D.OverlapCircle(groundCheck.position,groundRadius,whatIsGround);		
+		anim.SetBool("Ground", grounded);
+		if(jump && canJump)
+		{
+			// Add a vertical force to the player.    			
+			anim.SetBool("Ground", false);    
+			//rigidbody2D.AddForce(new Vector2(0f, jumpForce));
+			rigidbody2D.velocity = new Vector2(0f,15f);
+			Debug.Log(" nilai sp " + sp);
+			// Can the player jump again??
+			availableJumps--;
+			if (availableJumps <= 0 ){
+				canJump = false;  
+				//sp = 1f;
+			} else {
+				//I modify the second jump force
+				jumpForce = secondJumpForce;
+				  
+			}
+			jump = false;
+			sp = 1.7f; 
+		}
+		//Debug.Log(" nilai spc " + sp);
+		rigidbody2D.velocity = lariotomatis(1f); 
+	}
+
 	void Update () {
 		
 		//touch screen
@@ -47,56 +78,20 @@ public class C_player5 : MonoBehaviour {
 		}
 		if ((Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0)) || (fingercount > 0)) {
 			
-			jump = true;// I can jump	
+			jump = true;// I can jump				 
 		}
 		else{ jump = false;
-			
+			   
 		}
-		
-		//tambah kecepatan otomatis
-		//Debug.Log("time " + Time.time);
-	}
-	
-	//Update for physics steps. Regular intervals. 
-	void FixedUpdate(){
-		
-		grounded = Physics2D.OverlapCircle(groundCheck.position,groundRadius,whatIsGround);
-		//Debug.Log(" nilai grounded "+ grounded);
-		
-		if(jump && canJump)
-		{
-			// Add a vertical force to the player.
-			
-			anim.SetBool("Ground", false);    
-			
-			rigidbody2D.AddForce(new Vector2(0f, jumpForce));
-			// Can the player jump again??
-			availableJumps--;
-			if (availableJumps <= 0 ){
-				canJump = false;  
-				//sp = 1f;
-				//	Debug.Log(" nilai canjump");
-			} else {
-				//I modify the second jump force
-				jumpForce = secondJumpForce;
-				sp = 1.6f;   
-			}
-			jump = false;
-		}
-		Debug.Log(" nilai spc " + sp);
-		rigidbody2D.velocity = lariotomatis(sp); 
 	}
 	
 	void OnCollisionEnter2D(Collision2D coll) {
-		if(grounded == true)
-		{
+		if(grounded == true){
 			//coll.gameObject.SendMessage(" hello gw di enter 2d");
 			canJump = true;
 			availableJumps = 2;
 			sp = 1f;
 			jumpForce = firstJumpForce;
 		}
-		
-		
 	}
 }
