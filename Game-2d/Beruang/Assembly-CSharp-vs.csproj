@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\C_Player2.cs" />
      <Compile Include="Assets\Scripts\C_player.cs" />
      <Compile Include="Assets\Scripts\C_player5.cs" />
+     <Compile Include="Assets\Scripts\MainMenu.cs" />
      <Compile Include="Assets\Scripts\Movescripts.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\SmoothFollow2d.cs" />
