@@ -46,12 +46,14 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\C_Player2.cs" />
      <Compile Include="Assets\Scripts\C_player.cs" />
-     <Compile Include="Assets\Scripts\C_player5.cs" />
+     <Compile Include="Assets\Scripts\ChangeBgcolor.cs" />
      <Compile Include="Assets\Scripts\Movescripts.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\RendererExtensions.cs" />
+     <Compile Include="Assets\Scripts\Scrolling.cs" />
      <Compile Include="Assets\Scripts\SmoothFollow2d.cs" />
+     <Compile Include="Assets\Scripts\Spawner.cs" />
      <Compile Include="Assets\Scripts\pancam.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,37 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-//[RequireComponent(typeof(PlayerPhysics))]
+
 public class C_player : MonoBehaviour {
 	
-	//arah ke kanan (x positif)
 	public Vector2 direction = new Vector2(1,0);
-
 	public float maxSpeed = 2f;
-	
-	bool facingleft = true;
+	private Vector3 movement;
 	Animator anim;
-	private Vector2 movement;
-	//to check ground and to habe a jumpforce we can change in the editor
-	bool grounded = false;
 	public Transform groundCheck;
 	float groundRadius = 0.2f;
+	bool grounded = false;
+	public LayerMask whatIsGround;   
 	
-	public LayerMask whatIsGround;    
-	public float jumpForce = 700f;
-	private float time = 2f;
-	//private PlayerPhysics PlayerPhysics;
-    
-	//private bool doublejump = true;
-	
-	// Use this for initialization
-	
-	public Vector2 lariotomatis()
+	//yang asli
+	public bool jump;
+	public float jumpForce = 15.0f; // Force added when the player jumps.
+	private bool canJump = false;
+	private int availableJumps = 2;
+	private float sp = 1.7f;
+	private float timelimit = 30.0f;
+
+	public Vector2 lariotomatis(float addspedd)
 	{
-		movement = new Vector2(maxSpeed * direction.x, rigidbody2D.velocity.y);
+		movement = new Vector3(addspedd * maxSpeed * direction.x, rigidbody2D.velocity.y);
 		return movement;	
 	}
-	
 	
 	void Start () {
 		
@@ -40,70 +34,60 @@ public class C_player : MonoBehaviour {
 	
 	void Update () {
 		
-   //  Jumpplayer();
-	}
-	
-		void Jumpplayer()
-	{
-		if(grounded && Input.GetKeyDown(KeyCode.Space))
-		{
-
-			anim.SetBool("Ground", false);
-			rigidbody2D.AddForce(new Vector2(20, jumpForce));
-			Debug.Log(" jump true");    
-			//Debug.Log(rigidbody2D.AddForce(new Vector2(0, jumpForce)));
-			Debug.Log(transform.position.y * maxSpeed);  
+		//touch screen
+		int fingercount = 0;
 		
-
-		 if(!grounded)
-			{
-				Debug.Log(" nilai ground false ");
+		foreach( Touch touch in Input.touches){
+			if(touch.phase == TouchPhase.Began){
+				fingercount++;
 			}
-			//grounded = false;
 		}
-
+		if (Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0) || (fingercount > 0)) {
+			
+			jump = true;// I can jump				 
+		}
+		else{ jump = false;}
+		addspeed();
 	}
-	
-	void FixedUpdate()
+
+	private void addspeed()
 	{
-		anim.SetFloat("vSpeed",rigidbody2D.velocity.y);
-		//set grounded boolean
-		grounded = Physics2D.OverlapCircle(groundCheck.position,groundRadius,whatIsGround);
-		//set ground in our animator jika objek jump maka animasi jump == true, jika objek mengenai tanah maka animasi false
-		anim.SetBool("Ground",grounded);
-		Jumpplayer();
-
-		
-		/*	float move = Input.GetAxis("Horizontal");
-		Debug.Log("nilai move" +move);
-		//movement = new Vector3(move * maxSpeed, rigidbody2D.velocity.y);
-		rigidbody2D.velocity = new Vector3(move * maxSpeed, rigidbody2D.velocity.y);
-		Debug.Log("nilai rigdbody2d.velocity" +rigidbody2D.velocity);
-		//set our spedd*
-	
-		anim.SetFloat("Speed",Mathf.Abs(move));
-
-		//Debug.Log(move.ToString());
-		if(move < 0 && !facingleft)
+		if((Time.time >= timelimit) && Time.time <= 450)
 		{
-			Flip();
-		}else if(move > 0 && facingleft)
-		{
-			Flip();
-		} 
-		movement = new Vector2(speedplayer.x * direction.x, speedplayer.y * direction.y);
-		movement = new Vector3(direction.y * maxSpeed, rigidbody2D.velocity.y);
-		*/
-		
-		rigidbody2D.velocity = lariotomatis();
 
+			Debug.Log(" waktu = " + timelimit);        
+			timelimit += 30.0f;   
+			sp += 0.1f;
+		}
+		Debug.Log(" nilai sp " + sp);
+		rigidbody2D.velocity = lariotomatis(sp); 
+	}    
+
+	//Update for physics steps. Regular intervals. 
+	void FixedUpdate(){    
+		
+		grounded = Physics2D.OverlapCircle(groundCheck.position,groundRadius,whatIsGround);		
+		anim.SetBool("Ground", grounded);
+		if(grounded && jump && canJump)
+		{			
+			anim.SetBool("Ground", false);    
+			rigidbody2D.velocity = new Vector2(0f,jumpForce);
+			// Can the player jump again??
+			availableJumps--;
+			if (availableJumps <= 1 ){
+				canJump = false;  
+			}
+			jump = false;
+		}
+		    
+		//rigidbody2D.velocity = lariotomatis(sp);   
 	}
-	
-	/*void Flip()
-	{
-		facingleft = !facingleft;
-		Vector3 theScale =transform.localScale;
-		theScale.x *= -1;
-		transform.localScale = theScale;
-	}*/
+
+	void OnCollisionEnter2D(Collision2D coll) {
+		if(grounded == true){
+			//coll.gameObject.SendMessage(" hello gw di enter 2d");
+			canJump = true;
+			availableJumps = 2;
+		}
+	}
 }
