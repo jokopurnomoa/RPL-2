@@ -47,12 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\C_player.cs" />
-<<<<<<< HEAD
      <Compile Include="Assets\Scripts\ChangeBgcolor.cs" />
-=======
-     <Compile Include="Assets\Scripts\C_player5.cs" />
-     <Compile Include="Assets\Scripts\MainMenu.cs" />
->>>>>>> f7879b7000e4ff5ebc3e1cc00af6aa199ce54ac8
      <Compile Include="Assets\Scripts\Movescripts.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\RendererExtensions.cs" />
