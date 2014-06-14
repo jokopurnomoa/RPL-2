@@ -20,10 +20,13 @@ public class Spawner : MonoBehaviour {
 	public void Spawn(){
 		float rand = Random.Range(0,1000);
 		//if random number is greater than 700 make a bomb
-		if(rand > 700){
+	/*	if(rand > 700){
 			Instantiate(obj [Random.Range(0, obj.GetLength(0))], transform.position, Quaternion.identity);
-		}
-		Debug.Log(" nilai random " + rand);
+		}*/
+		Debug.Log(" nilai random range objek " + Random.Range(0, obj.GetLength(0)));
+		Instantiate(obj [Random.Range(0, obj.GetLength(0))], transform.position, Quaternion.identity);
+
+		//Debug.Log(" nilai random " + rand);
 		Invoke("Spawn", Random.Range(spawMin,spawMax));
 	}
 }

@@ -47,17 +47,18 @@ public class C_player : MonoBehaviour {
 			jump = true;// I can jump				 
 		}
 		else{ jump = false;}
+		//menambahkan kecepatan setiap 30 detik
 		addspeed();
 	}
 
 	private void addspeed()
 	{
-		if((Time.time >= timelimit) && Time.time <= 450)
+		if((Time.time >= timelimit) && Time.time <= 330)
 		{
 
 			Debug.Log(" waktu = " + timelimit);        
 			timelimit += 30.0f;   
-			sp += 0.1f;
+			sp += 0.15f;
 		}
 		Debug.Log(" nilai sp " + sp);
 		rigidbody2D.velocity = lariotomatis(sp); 
@@ -85,7 +86,6 @@ public class C_player : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D coll) {
 		if(grounded == true){
-			//coll.gameObject.SendMessage(" hello gw di enter 2d");
 			canJump = true;
 			availableJumps = 2;
 		}
