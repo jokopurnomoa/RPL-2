@@ -17,6 +17,7 @@ public class Scrolling : MonoBehaviour {
 	// list of children with render
 	private List<Transform> backgroundPart;
 
+
 	void Start ()
 	{
 		//for infinite backgorund only

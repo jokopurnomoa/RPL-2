@@ -2,7 +2,7 @@
 using System.Collections;
 
 
-public class C_player : MonoBehaviour {
+public class Player : MonoBehaviour {
 	
 	public Vector2 direction = new Vector2(1,0);
 	public float maxSpeed = 2f;
@@ -18,10 +18,10 @@ public class C_player : MonoBehaviour {
 	public float jumpForce = 15.0f; // Force added when the player jumps.
 	private bool canJump = false;
 	private int availableJumps = 2;
-	private float sp = 1.7f;
+	private float speed = 1.7f;
 	private float timelimit = 30.0f;
 
-	public Vector2 lariotomatis(float addspedd)
+	public Vector2 Autorun(float addspedd)
 	{
 		movement = new Vector3(addspedd * maxSpeed * direction.x, rigidbody2D.velocity.y);
 		return movement;	
@@ -48,20 +48,20 @@ public class C_player : MonoBehaviour {
 		}
 		else{ jump = false;}
 		//menambahkan kecepatan setiap 30 detik
-		addspeed();
+		Addspeed();
 	}
 
-	private void addspeed()
+	private void Addspeed()
 	{
 		if((Time.time >= timelimit) && Time.time <= 330)
 		{
 
 			Debug.Log(" waktu = " + timelimit);        
 			timelimit += 30.0f;   
-			sp += 0.15f;
+			speed += 0.15f;
 		}
-		Debug.Log(" nilai sp " + sp);
-		rigidbody2D.velocity = lariotomatis(sp); 
+		Debug.Log(" nilai sp " + speed);
+		rigidbody2D.velocity = Autorun(speed); 
 	}    
 
 	//Update for physics steps. Regular intervals. 
