@@ -21,19 +21,22 @@ public class Camerafollow : MonoBehaviour {
 	public void IncreaseScore(int amount){
 		playerscore += amount;
 	}
+
+	void OnDisable(){
+		PlayerPrefs.SetInt("Score",(int)(playerscore));  
+	}
 	
 	// Update is called once per frame
 	void Update () {
 		   
 		if(player)   
-		{
-			if (player.transform.position.x > 17.82573) {
+		{    
+			if (player.transform.position.x > -54.78798) {
 				playerscore += Time.deltaTime;
-				transform.position = new Vector3 (player.transform.position.x + 0.01f  , transform.position.y , -20);
-				//transform.position = new Vector3 (transform.position.x + 0.1f, transform.position.y + ydir , -20);
+				transform.position = new Vector3 (player.transform.position.x  , transform.position.y , -20);
+				//transform.position = new Vector3 (transform.position.x + 0.1f, transform.position.y  , -20);
 			}
 		}
-	
 	}
 
 }

@@ -21,10 +21,8 @@ public class Spawner1 : MonoBehaviour {
 			Instantiate(obj [Random.Range(0, obj.GetLength(0))], transform.position, Quaternion.identity);
 		}*/
 		//Instantiate(obj [Random.Range(0, obj.GetLength(0))], transform.position, Quaternion.identity);
-		Instantiate(obj [0], transform.position, Quaternion.identity);
-
+		Instantiate(obj [0], transform.position, Quaternion.identity);  
 		//Debug.Log(" nilai random " + rand);
-		Debug.Log(" time aktifkan invoke " + Time.deltaTime);
 		Invoke("Spawn", 10);    
 	}
 }

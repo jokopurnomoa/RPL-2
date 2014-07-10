@@ -48,12 +48,17 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\BonusPoint.cs" />
      <Compile Include="Assets\Scripts\Camerafollow.cs" />
-     <Compile Include="Assets\Scripts\ChangeBgcolor.cs" />
+     <Compile Include="Assets\Scripts\ControllerPlayer.cs" />
      <Compile Include="Assets\Scripts\Destroyer.cs" />
+     <Compile Include="Assets\Scripts\Gameover.cs" />
+     <Compile Include="Assets\Scripts\GroundSpawn.cs" />
      <Compile Include="Assets\Scripts\MainMenu.cs" />
+     <Compile Include="Assets\Scripts\PauseMenu.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\RendererExtensions.cs" />
      <Compile Include="Assets\Scripts\Scrolling.cs" />
+     <Compile Include="Assets\Scripts\SoundEffectHelper.cs" />
+     <Compile Include="Assets\Scripts\SoundOnOff.cs" />
      <Compile Include="Assets\Scripts\Spawner.cs" />
      <Compile Include="Assets\Scripts\Spawner1.cs" />
   </ItemGroup>

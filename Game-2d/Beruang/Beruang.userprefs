@@ -1,16 +1,17 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BonusPoint.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PauseMenu.cs">
     <Files>
-      <File FileName="Assets\Scripts\BonusPoint.cs" Line="4" Column="42" />
-      <File FileName="Assets\Scripts\Camerafollow.cs" Line="25" Column="22" />
-      <File FileName="Assets\Scripts\Player.cs" Line="24" Column="40" />
-      <File FileName="Assets\Scripts\Spawner1.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Destroyer.cs" Line="7" Column="41" />
-      <File FileName="Assets\Scripts\MainMenu.cs" Line="16" Column="20" />
-      <File FileName="Assets\Scripts\Spawner.cs" Line="4" Column="21" />
-      <File FileName="Assets\Scripts\RendererExtensions.cs" Line="7" Column="21" />
-      <File FileName="Assets\Scripts\Scrolling.cs" Line="63" Column="60" />
+      <File FileName="Assets\Scripts\PauseMenu.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SoundOnOff.cs" Line="23" Column="3" />
+      <File FileName="Assets\Scripts\GroundSpawn.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Camerafollow.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SoundEffectHelper.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Gameover.cs" Line="19" Column="16" />
+      <File FileName="Assets\Scripts\MainMenu.cs" Line="24" Column="23" />
+      <File FileName="Assets\Scripts\PauseMenu.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\RendererExtensions.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

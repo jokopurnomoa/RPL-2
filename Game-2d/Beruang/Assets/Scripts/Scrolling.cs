@@ -50,7 +50,6 @@ public class Scrolling : MonoBehaviour {
 		if(isLinkedTocamera){
 			Camera.main.transform.Translate(movement);
 		}
-
 		// 4 - Loop
 		if(isLooping)
 		{   

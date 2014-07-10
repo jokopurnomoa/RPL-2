@@ -12,17 +12,17 @@ public class MainMenu : MonoBehaviour {
 	void Update () {
 	
 	}
-
+	   
 	void OnMouseDown(){
 		if (this.gameObject.name == "play") {
-			Debug.Log("Button play clicked!");
 			Application.LoadLevel("main_scene");
 		} else if (this.gameObject.name == "score") {
 			
 		} else if (this.gameObject.name == "help") {
 			
-		} else if (this.gameObject.name == "exit") {
-			
+		}else if (this.gameObject.name == "exit") {
+			Application.Quit();
 		}
 	}
+
 }
